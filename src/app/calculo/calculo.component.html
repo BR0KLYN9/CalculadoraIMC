@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de IMC</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body style="background-color: #0d1117; color: #ffffff;">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Conversas sobre Calculadora</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Conversa 1</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Conversa 2</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Conversa 3</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Calculadora de IMC</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="weight">Peso (kg):</label>
+                <input type="number" class="form-control" id="weight" [(ngModel)]="weight" style="border-color: #ffffff;">
+            </div>
+            <div class="form-group">
+                <label for="height">Altura (m):</label>
+                <input type="number" class="form-control" id="height" [(ngModel)]="height" style="border-color: #ffffff;">
+            </div>
+            <button class="btn btn-primary btn-block" (click)="calculateIMC()" style="background-color: #0d1117; border-color: #ffffff;">Calcular</button>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-6" *ngIf="result">
+            <h4 class="text-center mb-3">Seu IMC é: {{ result }}</h4>
+            <p class="text-center">{{ interpretation }}</p>
+            <div class="text-center">
+                <span *ngIf="interpretation === 'Abaixo do peso'"><img src="assets/img/magra.jpeg" class="img-fluid rounded-circle border border-warning p-2"></span>
+                <span *ngIf="interpretation === 'Peso normal'"><img src="assets/img/normal.jpg" class="img-fluid rounded-circle border border-success p-2"></span>
+                <span *ngIf="interpretation === 'Sobrepeso'"><img src="assets/img/sobrepeso.jpg" class="img-fluid rounded-circle border border-danger p-2"></span>
+                <span *ngIf="interpretation === 'Obesidade'"><img src="../assets/img/obesidade.jpg" class="img-fluid rounded-circle border border-info p-2"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Conversas -->
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card mb-4">
+        <div class="card-header">Versão Magra</div>
+        <div class="card-body">
+          <p class="card-text">Adicione um peso baixo e uma altura alta para mostrar um resultado magro</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card mb-4">
+        <div class="card-header">Versão normal</div>
+        <div class="card-body">
+          <p class="card-text">Adicione um peso normal e uma altura normal para mostrar um resultado normal</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card mb-4">
+        <div class="card-header">Versão sobrepeso</div>
+        <div class="card-body">
+          <p class="card-text">Adicione um peso alto e altura normal para mostrar um sobrepeso e uma obesidade</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
